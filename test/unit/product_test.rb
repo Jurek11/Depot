@@ -48,4 +48,5 @@ def new_product(image_url)
       assert new_product(name).invalid?, "#{name} shouldn't be valid"
     end
 
+	end
 end
