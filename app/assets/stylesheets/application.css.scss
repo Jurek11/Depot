@@ -43,7 +43,13 @@
     padding: 1em;
     background: white;
   }
-
+  #time {
+  	position: absolute;
+    width: 15em;
+    padding: .5em 1em;
+    color: #fff;
+    text-align: right;
+  }
   #side {
     float: left;
     padding: 1em 2em;

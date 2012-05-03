@@ -17,6 +17,9 @@
     <%= @page_title || "Pragmatic Bookshelf" %><!-- <label id="code.depot.e.title"/> -->
   </div>
   <div id="columns">
+  	<div id='time'>
+  		<%= Time.now.strftime('%D %R')%>
+  	</div>
     <div id="side">
       <ul>
         <li><a href="http://www....">Home</a></li>
