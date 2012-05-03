@@ -10,7 +10,12 @@
     <h3><%= product.title %></h3>
     <%= sanitize(product.description) %>
     <div class="price_line">
-      <span class="price"><%= number_to_currency(product.price, unit: 'BLR', separator: '.', delimeter: ' ', format: '%nk %u') %></span>
+      	<span class="price"><%= number_to_currency(product.price, 
+	      						unit: 'BLR', 
+	      						separator: '.', 
+	      						delimeter: ' ', 
+	      						format: '%nk %u') %>
+      	</span>
     </div>
   </div>
 <% end %>
