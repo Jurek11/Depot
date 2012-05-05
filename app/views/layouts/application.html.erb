@@ -1,25 +1,26 @@
-<!-- START:head -->
 <!DOCTYPE html>
 <html>
 <head>
-<!-- START_HIGHLIGHT -->
+
   <title>Pragprog Books Online Store</title>
-<!-- END_HIGHLIGHT -->
+
   <%= stylesheet_link_tag "application" %><!-- <label id="code.slt"/> -->
   <%= javascript_include_tag "application" %><!-- <label id="code.jlt"/> -->
   <%= csrf_meta_tag %><!-- <label id="code.csrf"/> -->
 </head>
-<!-- END:head -->
+
 <body class="<%= controller.controller_name %>">
-<!-- START_HIGHLIGHT -->
+
   <div id="banner">
     <%= image_tag("logo.png") %>
-    <%= @page_title || "Pragmatic Bookshelf" %><!-- <label id="code.depot.e.title"/> -->
+    <%= @page_title || "Pragmatic Bookshelf" %><!-- <label id="code.depot.e.title"/> -->    
   </div>
+  
   <div id="columns">
   	<div id='time'>
   		<%= Time.now.strftime('%D %R')%>
   	</div>
+    
     <div id="side">
       <ul>
         <li><a href="http://www....">Home</a></li>
@@ -29,11 +30,14 @@
       </ul>
     </div>
     <div id="main">
-<!-- END_HIGHLIGHT -->
+    
+    <div id='count'>
+      Sessions:<%= pluralize(@count, 'time')%>
+    </div>  
       <%= yield %><!-- <label id="code.depot.e.include"/> -->
-<!-- START_HIGHLIGHT -->
+
     </div>
   </div>
-<!-- END_HIGHLIGHT -->
+
 </body>
 </html>
