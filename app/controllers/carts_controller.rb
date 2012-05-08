@@ -7,8 +7,15 @@ class CartsController < ApplicationController
   end
 
   def show
-    @cart = Cart.find(params[:id])
-    respond_with @cart
+    begin
+      @cart = Cart.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Attempt to access invalid cart #{params[:id]}"
+      redirect_to store_url, notice: 'Invalid cart'
+    else
+      respond_with @cart
+    end
+    
   end
 
   def new
