@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
+  respond_to :html
+  
   private
 
     def current_cart 

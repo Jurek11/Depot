@@ -1,6 +1,5 @@
 class CartsController < ApplicationController
-  respond_to :html
-  
+    
   def index
     @carts = Cart.all
     respond_with @carts
@@ -15,7 +14,6 @@ class CartsController < ApplicationController
     else
       respond_with @cart
     end
-    
   end
 
   def new
