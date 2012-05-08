@@ -44,6 +44,13 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item = LineItem.find(params[:id])
     @line_item.destroy
-    respond_with(@line_item, location: line_items_url) 
+    if current_cart.line_items.empty?
+      flash[:notice] = 'Your cart is empty'
+      respond_with(@line_item, location: store_url)
+    else  
+      flash[:notice] = 'Line item was successfully removed.'
+      respond_with(@line_item, location: @line_item.cart) 
+    end
   end
+
 end
