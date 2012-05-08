@@ -31,7 +31,6 @@ class LineItemsController < ApplicationController
     
     if @line_item.save
       reset_s_c
-      flash[:notice] =  'Line item was successfully created.'
     end
     respond_with(@line_item, location: @line_item.cart)
   end

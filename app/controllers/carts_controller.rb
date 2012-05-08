@@ -40,9 +40,11 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    @cart = Cart.find(params[:id])
+    @cart = current_cart
     @cart.destroy
-    respond_with(@cart, location: carts_url) 
+    session[:cart_id] = nil
+    flash[:notice] = 'Your cart is currently empty'
+    respond_with(@cart, location: store_url) 
   end
 
 end
