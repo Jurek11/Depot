@@ -31,13 +31,17 @@
     </div>
     <div id="main">
 
-    <% if session[:counter] >= 5%>
-    <div id='count'>
-      Sessions:<%= pluralize(@count, 'time')%>
-    </div> 
-    <%end%> 
-    
-      <%= yield %><!-- <label id="code.depot.e.include"/> -->
+      <% if session[:counter] >= 5%>
+        <div id='count'>
+          Sessions:<%= pluralize(@count, 'time')%>
+        </div> 
+      <%end%> 
+      
+      <% if notice %>
+        <p id="notice"><%= notice %></p>
+      <% end %>
+      
+      <%= yield %>
 
     </div>
   </div>

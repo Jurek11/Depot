@@ -5,7 +5,7 @@ class LineItemsController < ApplicationController
     respond_with @line_items
   end
 
-  def reset_s_c
+  def reset_session_counter
     session[:counter] = 0
   end
   
@@ -28,7 +28,7 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product.id, product.price)
     if @line_item.save
-      reset_s_c
+      reset_session_counter
     end
     respond_with(@line_item, location: @line_item.cart)
   end
