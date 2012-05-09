@@ -27,10 +27,19 @@ class LineItemsController < ApplicationController
     @cart = current_cart
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product.id, product.price)
-    if @line_item.save
-      reset_session_counter
+    respond_to do |format|
+      if @line_item.save
+        reset_session_counter
+        format.html { redirect_to store_url }
+        format.js
+        format.json { render json: @line_item,
+          status: :created, location: @line_item }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @line_item.errors,
+          status: :unprocessable_entity }
+      end
     end
-    respond_with(@line_item, location: store_url)
   end
 
   def update
