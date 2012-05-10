@@ -1,5 +1,6 @@
 class LineItemsController < ApplicationController
-    
+  respond_to :js, only: [:create]  
+  
   def index
     @line_items = LineItem.all
     respond_with @line_items
@@ -31,13 +32,9 @@ class LineItemsController < ApplicationController
       if @line_item.save
         reset_session_counter
         format.html { redirect_to store_url }
-        format.js
-        format.json { render json: @line_item,
-          status: :created, location: @line_item }
+        format.js {@current_item = @line_item}
       else
         format.html { render action: "new" }
-        format.json { render json: @line_item.errors,
-          status: :unprocessable_entity }
       end
     end
   end
