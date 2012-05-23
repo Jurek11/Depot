@@ -42,7 +42,7 @@ class CartsController < ApplicationController
     @cart.destroy
     session[:cart_id] = nil
     flash[:notice] = 'Your cart is currently empty'
-    respond_with(@cart, location: store_url) 
+    respond_with @cart
   end
 
 end
