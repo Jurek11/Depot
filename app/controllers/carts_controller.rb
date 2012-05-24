@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
-    
+  respond_to :js, only: [:destroy]  
+  
   def index
     @carts = Cart.all
     respond_with @carts
