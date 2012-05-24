@@ -1,5 +1,3 @@
-<% unless cart.line_items.empty? %>
-
 <div class="cart_title">Your Cart at time <%= Time.now.strftime('%D %R')%></div>
 <table>
   <%= render(cart.line_items) %>
@@ -12,5 +10,3 @@
 
 <%= button_to 'Empty cart', cart, method: :delete,
     confirm: 'Are you sure?' %>
-
-<% end %>
